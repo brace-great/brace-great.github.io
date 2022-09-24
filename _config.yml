@@ -3,17 +3,18 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ""
+title: brace-great
+subtitle: Integrity
 description: ""
 keywords:
-author: John Doe
-language: en
-timezone: ""
+  - touhou
+author: brace-great
+language: zh-CN
+timezone: "Asia/Shanghai"
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://brace-great.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -97,8 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
-
+theme: melody
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
@@ -106,3 +106,10 @@ deploy:
   repo: https://github.com/brace-great/brace-great.github.io.git
   branch: main
   message: no
+
+#
+search:
+  path: search.xml
+  field: post
+  content: true
+  # template: ./search.xml
