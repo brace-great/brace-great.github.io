@@ -31,7 +31,7 @@ categories: HTML5
 - 当 action 为 get 时候，浏览器用 x-www-form-urlencoded 的编码方式把 form 数据转换成一个字串（name1=value1&name2=value2...），然后把这个字串 append 到 url 后面，用?分割，加载这个新的 url; 当 action 为 post 时候，浏览器把 form 数据封装到 http body 中，然后发送到 server。
 - 如果没有 type=file 的控件，用默认的 application/x-www-form-urlencoded 就可以了。但是如果有 type=file 的话，就要用到 multipart/form-data 了。浏览器会把整个表单以控件为单位分割，并为每个部分加上 Content-Disposition(form-data 或者 file),Content-Type(默认为 text/plain),name(控件 name)等信息，并加上分割符(boundary)。
 
-> 参考文献
+### 参考文献
 
 [1] [Content-Type|MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type#:~:text=Content%2DType%20%E5%AE%9E%E4%BD%93%E5%A4%B4%E9%83%A8%E7%94%A8%E4%BA%8E%E6%8C%87%E7%A4%BA%E8%B5%84%E6%BA%90%E7%9A%84%20MIME%20%E7%B1%BB%E5%9E%8B%20media%20type%20%E3%80%82)
 [2] [MIME 类型|MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types#:~:text=%E5%85%B6%E4%BB%96-,MIME%20%E7%B1%BB%E5%9E%8B,-%E5%AA%92%E4%BD%93%E7%B1%BB%E5%9E%8B%EF%BC%88%E9%80%9A%E5%B8%B8)

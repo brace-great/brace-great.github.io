@@ -5,7 +5,7 @@
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo deploy -m 切换melody主题/完成初始化",
+    "deploy": "hexo deploy -m 第一篇文",
     "server": "hexo server",
     "nodemonserver": "nodemon -e yml,md,ts,js --watch ./*.yml --watch source --exec npx hexo server",
     "new": "hexo new Content-Type"
