@@ -1,6 +1,6 @@
 ---
 title: Content-Type的常用取值及enctype的区别
-date: 2022-09-24 14:31:26
+date: 2020-09-24 14:31:26
 tags:
 categories: HTML5
 ---

@@ -5,10 +5,10 @@
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo deploy -m 第一篇文",
+    "deploy": "hexo deploy -m 更新",
     "server": "hexo server",
     "nodemonserver": "nodemon -e yml,md,ts,js --watch ./*.yml --watch source --exec npx hexo server",
-    "new": "hexo new Content-Type"
+    "new": "hexo new uview入门"
   },
   "hexo": {
     "version": "6.3.0"
@@ -19,6 +19,7 @@
     "hexo-deployer-git": "^3.0.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
+    "hexo-generator-feed": "^3.0.0",
     "hexo-generator-index": "^2.0.0",
     "hexo-generator-search": "^2.4.3",
     "hexo-generator-tag": "^1.0.0",
