@@ -1,5 +1,5 @@
 ---
-title: Featherjs快速创建服务端
+title: VsCode配置ts开发环境
 date: 2021-10-1 22:15:02
 tags: ts
 categories: Vscode

@@ -149,7 +149,7 @@ cdn:
 # ---------------
 avatar:
 
-top_img: https://i.postimg.cc/SNxWCqTd/header.jpg # false or url of img
+top_img: https://s1.ax1x.com/2023/05/29/p9XXRGd.jpg # https://imgse.com/i/p9XXRGd
 
 top_img_height: 60 # best range: 60 - 100
 
@@ -279,7 +279,7 @@ gitalk:
 
 # Footer Settings
 # ---------------
-since: 2022
+since: 2020
 
 footer_custom_text: "Listen to me, thank you"
 
