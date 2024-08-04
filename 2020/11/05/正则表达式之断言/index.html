@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="正则表达式之断言"><meta name="keywords" content="正则表达式"><meta name="author" content="brace-great"><meta name="copyright" content="brace-great"><title>正则表达式之断言 | brace-great</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '6.3.0'
+} </script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/rss2.xml" title="brace-great" type="application/rss+xml">
+</head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%9E%BB%E6%96%AD%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前瞻断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%A6%E5%AE%9A%E7%9A%84%E5%89%8D%E7%9E%BB%E6%96%AD%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">否定的前瞻断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%9E%BB%E6%96%AD%E8%A8%80"><span class="toc-number">3.</span> <span class="toc-text">后瞻断言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%95%E8%8E%B7%E7%BB%84"><span class="toc-number">4.</span> <span class="toc-text">捕获组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-number">5.1.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">brace-great</div><div class="author-info__description text-center"></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">12</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">6</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">7</span></a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2023/05/29/p9XXRGd.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">brace-great</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">正则表达式之断言</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-11-05</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/HTML5/">HTML5</a></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>有时我们只需要为一个模式找到那些在另一个模式之后或之前的匹配项。</p>
+<p>有一种特殊的语法，称为“前瞻断言（lookahead）”和“后瞻断言（lookbehind）”。</p>
+<p>首先，让我们从字符串中查找价格，例如  <code>1 turkey costs 30€</code>。即：一个数字，后跟<code>€</code>符号。</p>
+<h2 id="前瞻断言"><a href="#前瞻断言" class="headerlink" title="前瞻断言"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/regexp-lookahead-lookbehind#qian-zhan-duan-yan">前瞻断言</a></h2><p>语法为：<code>x(?=y)</code>，它表示“仅在后面是  <code>Y</code>  时匹配  <code>X</code>”。There may be any pattern instead of <code>X</code> and <code>Y</code>.</p>
+<p>那么对于一个后面跟着  <code>€</code>  的整数，正则表达式应该为：<code>\d+(?=€)</code>。</p>
+<p><code>let str = &quot;1 turkey costs 30€&quot;; alert( str.match(/\d+(?=€)/) ); // 30，数字 1 被忽略了，因为它后面没有 €</code></p>
+<p>请注意：前瞻断言只是一个测试，括号  <code>(?=...)</code>  中的内容不包含在匹配结果  <code>30</code>  中。</p>
+<p>当我们查找  <code>X(?=Y)</code>  时，正则表达式引擎会找到  <code>X</code>，然后检查其后是否有  <code>Y</code>。如果没有，则跳过潜在匹配，并继续搜索。</p>
+<p>更复杂的测试也是可能的，例如  <code>X(?=Y)(?=Z)</code>  表示：</p>
+<ol>
+<li>寻找  <code>X</code>。</li>
+<li>检查  <code>Y</code>  是否紧跟在  <code>X</code>  之后（如果不是则跳过）。</li>
+<li>检查  <code>Z</code>  是否也在  <code>X</code>  之后（如果不是则跳过）。</li>
+<li>如果两个测试都通过了，那么  <code>X</code>  是匹配的，否则继续搜索。</li>
+</ol>
+<p>换句话说，这样的模式意味着我们同时在寻找  <code>X</code>  后跟  <code>Y</code>  和  <code>Z</code>。</p>
+<p>这只有在模式  <code>Y</code>  和  <code>Z</code>  不是互斥的情况下才可行。</p>
+<p>例如，<code>\d+(?=\s)(?=.*30)</code>  查找后跟着空格  <code>(?=\s)</code>  的  <code>\d+</code>，并且有  <code>30</code>  在它之后的某个地方  <code>(?=.*30)</code>：</p>
+<p><code>let str = &quot;1 turkey costs 30€&quot;; alert( str.match(/\d+(?=\s)(?=.*30)/) ); // 1</code></p>
+<p>在我们给出的字符串中，与数字  <code>1</code>  完全匹配。</p>
+<h2 id="否定的前瞻断言"><a href="#否定的前瞻断言" class="headerlink" title="否定的前瞻断言"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/regexp-lookahead-lookbehind#fou-ding-de-qian-zhan-duan-yan">否定的前瞻断言</a></h2><p>假设我们想要一个数量，而不是来自同一字符串的价格。那是一个数字  <code>\d+</code>，后面不是  <code>€</code>。</p>
+<p>为此，我们可以使用否定的前瞻断言。</p>
+<p>语法是：<code>X(?!Y)</code>，意思是“搜索  <code>X</code>，但前提是后面没有  <code>Y</code>”。</p>
+<p><code>let str = &quot;2 turkeys cost 60€&quot;; alert( str.match(/\d+\b(?!€)/g) ); // 2（价格不匹配）</code></p>
+<h2 id="后瞻断言"><a href="#后瞻断言" class="headerlink" title="后瞻断言"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/regexp-lookahead-lookbehind#hou-zhan-duan-yan">后瞻断言</a></h2><p>后瞻断言的浏览器兼容情况</p>
+<p>请注意：非 V8 引擎的浏览器不支持后瞻断言，例如 Safari、Internet Explorer。</p>
+<p>前瞻断言允许添加一个“后面要跟着什么”的条件判断。</p>
+<p>后瞻断言也类似，只不过它是在相反的方向上进行条件判断。也就是说，它只允许匹配前面有特定字符串的模式。</p>
+<p>语法为如下：</p>
+<ul>
+<li>肯定的后瞻断言：<code>(?&lt;=Y)X</code>，匹配  <code>X</code>，仅在前面是  <code>Y</code>  的情况下。</li>
+<li>否定的后瞻断言：<code>(?&lt;!Y)X</code>，匹配  <code>X</code>，仅在前面不是  <code>Y</code>  的情况下。</li>
+</ul>
+<p>例如，让我们把价格换成美元。美元符号通常在数字前面，所以要查找  <code>$30</code>  我们将使用  <code>(?&lt;=\$)\d+</code> —— 一个前面带  <code>$</code>  的数值：</p>
+<p><code>let str = &quot;1 turkey costs $30&quot;; // 美元符号被转义 \$ alert( str.match(/(?&lt;=\$)\d+/) ); // 30（跳过了仅仅是数字的值）</code></p>
+<p>如果我们需要找到量词 —— 一个前面不带  <code>$</code>  的数字，我们可以使用否定的后瞻断言：<code>(?&lt;!\$)\d+</code></p>
+<p><code>let str = &quot;2 turkeys cost $60&quot;; alert( str.match(/(?&lt;!\$)\b\d+/g) ); // 2（价格不匹配）</code></p>
+<h2 id="捕获组"><a href="#捕获组" class="headerlink" title="捕获组"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/regexp-lookahead-lookbehind#bu-huo-zu">捕获组</a></h2><p>一般来说，前瞻断言和后瞻断言括号中的内容不会成为结果的一部分。</p>
+<p>例如，在模式  <code>\d+(?!€)</code>  中，<code>€</code>  符号就不会出现在匹配结果中。这是很自然的事：我们寻找一个数字  <code>\d+</code>，而  <code>(?=€)</code>  只是一个测试，表示要匹配的数字后面应该紧跟着  <code>€</code>  字符。</p>
+<p>但在某些情况下，我们可能还想捕获前瞻断言和后瞻断言所匹配的内容，或者部分内容。这也是可行的。只需要将该部分包装在额外的括号中。</p>
+<p>在下面的示例中，货币符号  <code>(€|kr)</code>  和金额一起被捕获了：</p>
+<p><code>let str = &quot;1 turkey costs 30€&quot;; let regexp = /\d+(?=(€|kr))/; // €|kr 两侧有额外的括号 alert( str.match(regexp) ); // 30, €</code></p>
+<p>后瞻断言也一样：</p>
+<p><code>let str = &quot;1 turkey costs $30&quot;; let regexp = /(?&lt;=(\$|£))\d+/; alert( str.match(regexp) ); // 30, $</code></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><a target="_blank" rel="noopener" href="https://zh.javascript.info/regexp-lookahead-lookbehind#zong-jie">总结</a></h2><p>当我们想根据前面&#x2F;后面的上下文匹配某些内容的时候，前瞻断言和后瞻断言（通常被称为“环视断言”）很有用。</p>
+<p>对于简单的正则表达式，我们可以手动执行类似的操作。即：不管上下文，匹配所有可匹配的内容，然后在循环中根据上下文进行过滤。</p>
+<p>请记住，<code>str.match</code>（没有修饰符  <code>g</code>）和  <code>str.matchAll</code>（总是）将匹配项作为具有  <code>index</code>  属性的数组返回，因此我们知道它在文本中的确切位置，并且可以检查上下文。</p>
+<p>但通常环视断言更方便。</p>
+<p>环视断言类型：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>类型</th>
+<th>匹配</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>X(?=Y)</code></td>
+<td>肯定的前瞻断言</td>
+<td><code>X</code>  后紧跟着  <code>Y</code></td>
+</tr>
+<tr>
+<td><code>X(?!Y)</code></td>
+<td>否定的前瞻断言</td>
+<td><code>X</code>  后没紧跟着  <code>Y</code></td>
+</tr>
+<tr>
+<td><code>(?&lt;=Y)X</code></td>
+<td>肯定的后瞻断言</td>
+<td><code>X</code>  紧跟在  <code>Y</code>  后面</td>
+</tr>
+<tr>
+<td><code>(?&lt;!Y)X</code></td>
+<td>否定的后瞻断言</td>
+<td><code>X</code>  没紧跟在  <code>Y</code>  后面</td>
+</tr>
+</tbody></table>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>[1] <a target="_blank" rel="noopener" href="https://zh.javascript.info/regexp-lookahead-lookbehind">前瞻断言与后瞻断言 (javascript.info)</a></p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">brace-great</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://brace-great.github.io/2020/11/05/正则表达式之断言/">https://brace-great.github.io/2020/11/05/正则表达式之断言/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">正则表达式</a></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2021/02/12/Windows%E5%BC%80%E5%90%AFwebdav/"><i class="fa fa-chevron-left">  </i><span>Windows开启webdav</span></a></div><div class="next-post pull-right"><a href="/2020/11/02/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B9%8B%E4%BF%AE%E9%A5%B0%E7%AC%A6u/"><span>正则表达式之修饰符u</span><i class="fa fa-chevron-right"></i></a></div></nav><div id="gitalk-container"></div><script>var gitalk = new Gitalk({
+  clientID: 'a844c9847b34057e734f',
+  clientSecret: '',
+  repo: 'brace-great.github.io',
+  owner: 'brace-great',
+  admin: 'brace-great',
+  id: md5(decodeURI(location.pathname)),
+  language: 'zh-CN'
+})
+gitalk.render('gitalk-container')</script></div></div><footer class="footer-bg" style="background-image: url(https://s1.ax1x.com/2023/05/29/p9XXRGd.jpg)"><div class="layout" id="footer"><div class="copyright">&copy;2020 - 2024 By brace-great</div><div class="framework-info"><span>Driven - </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="footer_custom_text">Listen to me, thank you</div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
