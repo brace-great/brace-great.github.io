@@ -61,25 +61,6 @@
     
     
     <entry>
-      <title>ChatGPT注册</title>
-      <link href="/2022/12/07/ChatGPT%E6%B3%A8%E5%86%8C/"/>
-      <url>/2022/12/07/ChatGPT%E6%B3%A8%E5%86%8C/</url>
-      
-        <content type="html"><![CDATA[<ol><li><p>访问官网点击 Sign up：<a href="https://chat.openai.com/auth/login">https://chat.openai.com/auth/login</a></p></li><li><p>邮箱注册或使用谷歌账户&#x2F;微软账户注册</p></li><li><p>到了最重要的一步，要国外的号码才能注册:</p></li></ol><p>我用的是印度尼西亚的号码，购买地址是 <a href="http://www.feijiji.com/">www.feijiji.com</a></p><p>付款后可以获取到 ID, 然后我们拿这串 ID 拼接到：<a href="https://ai.7z.ee/sms/">https://ai.7z.ee/sms/</a> 后面并在浏览器中打开</p><p>此时根据返回的信息输入国家号和手机</p><p>点击发送之后，刷新刚刚的返回的地址即可等待验证码</p><ul><li>如果等待很久还是不来码可以把 URL 中间的 sms 改成 chg 然后刷新获取新的号码, 然后再把 chg 换成 sms 接收新的验证码即可。</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> AI </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>uview入门</title>
       <link href="/2022/09/12/uview%E5%85%A5%E9%97%A8/"/>
       <url>/2022/09/12/uview%E5%85%A5%E9%97%A8/</url>
