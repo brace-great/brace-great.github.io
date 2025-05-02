@@ -5,6 +5,8 @@ tags:
 categories: React
 ---
 
+# Use the OneNote API in Microsoft Graph to access OneNote notebooks, sections, and pages to create solutions that help your users plan and organize ideas and information.
+
 # react 的生命周期大全
 
 react 的生命周期除了能够在一些指定的时间触发一些函数以外 还具备一些其他能力。
@@ -32,8 +34,6 @@ react 的生命周期除了能够在一些指定的时间触发一些函数以�
 # 更新阶段（commit 阶段 提交阶段）
 
 ## static getDerivedStateFromProps(props,state)
-
-接受的属性变化 或者是 setState 之后 或者是 forceUpdat 的时候都会执行一次
 
 ```
 

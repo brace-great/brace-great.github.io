@@ -5,10 +5,10 @@
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo deploy -m 常用工具命令",
+    "deploy": "hexo deploy -m 40902",
     "server": "hexo server",
     "nodemonserver": "nodemon -e yml,md,ts,js --watch ./*.yml --watch source --exec npx hexo server",
-    "new": "hexo new 常用工具命令"
+    "new": "1"
   },
   "hexo": {
     "version": "6.3.0"
