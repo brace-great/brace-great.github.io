@@ -15,7 +15,7 @@ react 的生命周期除了能够在一些指定的时间触发一些函数以�
 
 ## constructor
 
-类组件本就是一个类的写法，那么 constructor 就是一个类的实例化过程当中最先执行的函数这就是一个生命周期
+类组件本就是一个类的写法，那么 constructor 就是一个类的实例化过程当中最先执行的函数这就是一个生命周期 what more should I said.
 
 ## static getDerivedStateFromProps
 
